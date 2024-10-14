@@ -1,3 +1,3 @@
 # Web Tradicional
 
-Este projeto é um software CRUD (Create, Read, Update, Delete) desenvolvido em Django.
+Sistema Web CRUD Básico para o Cadastro de Montadoras e Veículos associados feito em Django.
