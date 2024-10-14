@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Enviar Dados da Montadora
+{% endblock %}
+
+{% block header %}
+<h1>Adicionar Montadora</h1>
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>
+{% endblock %}

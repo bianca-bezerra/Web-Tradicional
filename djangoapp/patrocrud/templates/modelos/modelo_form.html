@@ -1,0 +1,10 @@
+{% extends "base.html" %} {% block title %}Novo Modelo de Veículo{% endblock %}
+{% block header %}
+<h1>Adicionar Modelo</h1>
+{% endblock %} {% block content %}
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Salvar</button>
+</form>
+<a href="{% url 'modelo_list' %}">Voltar à lista</a>
+{% endblock %}

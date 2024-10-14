@@ -1,0 +1,6 @@
+{% extends "base.html" %} {% block title %}PATROCARS{% endblock %} 
+
+{%block header%}<h1>PATROCARS</h1>{%endblock%}
+
+{% block content %}<a href="{% url 'montadora_list' %}">Montadora</a>
+<a href="{% url 'modelo_list' %}">Modelo</a>{%endblock%}

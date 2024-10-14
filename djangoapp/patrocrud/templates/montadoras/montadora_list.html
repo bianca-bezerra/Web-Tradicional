@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block title %} Lista de Montadoras {% endblock %}
+{% block header %}
+<h1>Lista de Montadoras</h1>
+
+{% endblock %} {% block content %}
+<div>
+        <a href="{% url 'montadora_create' %}">Criar montadora</a>
+</div>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Ano de Fundação</th>
+        <th>País</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for montadora in montadoras %}
+      <tr>
+        <td>
+          <a href="{% url 'montadora_detail' montadora.pk %}"
+            >{{ montadora.nome }}</a
+          >
+        </td>
+        <td>{{ montadora.ano_fundacao }}</td>
+        <td>{{ montadora.pais }}</td>
+        <td>
+          <a href="{% url 'montadora_delete' montadora.pk %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+
+  {% endblock %}
+</div>
