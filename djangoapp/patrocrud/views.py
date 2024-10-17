@@ -40,7 +40,14 @@ def montadora_delete(request, pk):
 
 def montadora_detail(request, pk):
     montadora = get_object_or_404(Montadora, pk=pk)
-    return render(request, "montadoras/montadora_detail.html", {"montadora": montadora})
+    modelos = ModeloVeiculo.objects.filter(montadora=montadora.pk)
+    print('existe',modelos)
+
+    if modelos:
+        context = {"modelos":modelos,"montadora": montadora}
+    else:
+        context = {"montadora": montadora}
+    return render(request, "montadoras/montadora_detail.html", context)
 
 
 def montadora_update(request, pk):
@@ -53,6 +60,7 @@ def montadora_update(request, pk):
         "montadora_detail",
         "Editar montadora",
     )
+
 
 
 # MODELO
