@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block page_title %} {{ page_title }}{% endblock %}
+{% block content %}
+<form method="POST" class="container">
+    {% block subtitle %}<h2 style="padding-bottom: 20px;">{{ subtitle }}</h2>{% endblock %}
+    {% csrf_token %}
+    
+    {% for field in form %}
+        <div class="field">
+            {{ field.label_tag }} 
+            {{ field }}
+        </div>
+    {% endfor %}
+    <div id="div-btn">
+        <button type="submit" class="btn">Salvar</button>
+    </div>
+</form>
+{% endblock %}

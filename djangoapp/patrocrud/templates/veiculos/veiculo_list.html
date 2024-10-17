@@ -1,0 +1,55 @@
+{% extends "base.html" %} 
+{% block title %} Lista de Veículos {% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="separator-row">
+    {% block subtitle %}<h2>Veículos</h2>{% endblock %}
+    <a href="{% url 'veiculo_create' %}">Criar veículo</a>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Modelo</th>
+        <th>Cor</th>
+        <th>Ano de fabricação</th>
+        <th>Ano do modelo</th>
+        <th>Valor</th>
+        <th>Placa</th>
+        <th>Vendido</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for veiculo in veiculos %}
+      <tr data-url="{% url 'veiculo_detail' veiculo.pk %}" style="cursor: pointer;">
+        <td>{{ veiculo.modelo }}</td>
+        <td>{{ veiculo.cor }}</td>
+        <td>{{ veiculo.ano_fabricacao }}</td>
+        <td>{{ veiculo.ano_modelo }}</td>
+        <td>{{ veiculo.valor }}</td>
+        <td>{{ veiculo.placa }}</td>
+        <td>{{ veiculo.vendido|yesno:"Sim,Não" }}</td>
+        <td>
+          <a href="{% url 'veiculo_delete' veiculo.pk %}">
+            <span style="color: rgb(173, 32, 32);" class="material-symbols-outlined">delete</span>
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="7">Nenhum veículo encontrado.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+    document.querySelectorAll('tr[data-url]').forEach(function(row) {
+        row.addEventListener('click', function() {
+            window.location.href = row.getAttribute('data-url');
+        });
+    });
+</script>
+{% endblock %}

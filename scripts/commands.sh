@@ -10,7 +10,16 @@ done
 
 echo "✅ Postgres Database Started Successfully ($POSTGRES_HOST:$POSTGRES_PORT)"
 
+echo "Iniciando coletar arquivos estáticos..."
 python manage.py collectstatic --noinput
-python manage.py makemigrations --noinput
+echo "Arquivos estáticos coletados."
+
+echo "Iniciando migrações..."
+python manage.py makemigrations patrocrud
+echo "Migrações criadas."
+
+echo "Aplicando migrações..."
 python manage.py migrate --noinput
+echo "Migrações aplicadas."
+
 python manage.py runserver 0.0.0.0:8000

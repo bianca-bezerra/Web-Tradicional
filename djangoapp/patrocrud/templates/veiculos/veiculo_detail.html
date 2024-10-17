@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block title %}Detalhes do Veiculo{% endblock %}
+{% block header %}
+<h1>Detalhes do {{veiculo.nome}}</h1>
+{% endblock %} {% block content %}
+<div id="detail">
+  <h2>{{ veiculo.nome }}</h2>
+  <p><strong>Cor:</strong> {{ veiculo.cor }}</p>
+  <p><strong>Ano de fabricação:</strong> {{ veiculo.ano_fabricacao }}</p>
+  <p><strong>Ano do modelo:</strong> {{ veiculo.ano_modelo }}</p>
+  <p><strong>Valor:</strong> {{ veiculo.valor }}</p>
+  <p><strong>Placa:</strong> {{ veiculo.placa }}</p>
+  <p><strong>Vendido:</strong> {{ veiculo.vendido|yesno:"Sim,Não" }}</p>
+
+  <a href="{% url 'veiculo_update' veiculo.pk %}">Editar</a>
+  <a href="{% url 'veiculo_delete' veiculo.pk %}">Deletar</a>
+  <a href="{% url 'veiculo_list' %}">Voltar à lista</a>
+</div>
+{% endblock %}

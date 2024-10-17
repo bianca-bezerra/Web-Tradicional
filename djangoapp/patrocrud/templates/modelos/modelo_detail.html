@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Detalhes do Modelo{% endblock %}
+{% block header %}
+<h1>Detalhes da {{modelo.nome}}</h1>
+{% endblock %} {% block content %}
+<div id="detail">
+  <h2>{{ modelo.nome }}</h2>
+
+  <p><strong>Montadora:</strong> {{ modelo.montadora.nome }}</p>
+  <p><strong>Valor:</strong> {{ modelo.valor_referencia }}</p>
+  <p><strong>Motorização:</strong> {{ modelo.motorizacao }}</p>
+  <p><strong>Turbo:</strong> {{ modelo.turbo }}</p>
+  <p><strong>Automático:</strong> {{ modelo.automatico }}</p>
+  <a href="{% url 'modelo_update' modelo.pk %}">Editar</a>
+  <a href="{% url 'modelo_delete' modelo.pk %}">Deletar</a>
+  <a href="{% url 'modelo_list' %}">Voltar à lista</a>
+</div>
+{% endblock %}

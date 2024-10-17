@@ -1,14 +1,12 @@
 {% extends 'base.html' %}
-
 {% block title %}Listar Modelos de Veículo{% endblock %}
-
-{% block header %}
-<h1>Modelos de Veículo</h1>
-{% endblock %}
-
 {% block content %}
 <div class="container">
+    <div class="separator-row">
+        {% block subtitle %}<h2>Modelos</h2>{% endblock %}
         <a href="{% url 'modelo_create' %}">Criar modelo</a>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
@@ -22,16 +20,18 @@
         </thead>
         <tbody>
             {% for modelo in modelos %}
-            <tr>
+            <tr data-url="{% url 'modelo_detail' modelo.pk %}" style="cursor: pointer;">
                 <td>{{ modelo.nome }}</td>
                 <td>{{ modelo.montadora.nome }}</td>
                 <td>{{ modelo.valor_referencia }}</td>
                 <td>{{ modelo.motorizacao }}</td>
                 <td>{{ modelo.turbo|yesno:"Sim,Não" }}</td>
                 <td>{{ modelo.automatico|yesno:"Sim,Não" }}</td>
-                        <td>
-          <a href="{% url 'modelo_delete' modelo.pk %}">Delete</a>
-        </td>
+                <td>
+                  <a href="{% url 'modelo_delete' modelo.pk %}">
+                    <span style="color: rgb(173, 32, 32);" class="material-symbols-outlined">delete</span>
+                  </a>
+                </td>
             </tr>
             {% empty %}
             <tr>
@@ -39,7 +39,14 @@
             </tr>
             {% endfor %}
         </tbody>
-        
     </table>
 </div>
+
+<script>
+    document.querySelectorAll('tr[data-url]').forEach(function(row) {
+        row.addEventListener('click', function() {
+            window.location.href = row.getAttribute('data-url');
+        });
+    });
+</script>
 {% endblock %}

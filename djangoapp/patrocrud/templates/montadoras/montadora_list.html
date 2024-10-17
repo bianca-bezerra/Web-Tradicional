@@ -1,13 +1,13 @@
-{% extends "base.html" %} {% block title %} Lista de Montadoras {% endblock %}
-{% block header %}
-<h1>Lista de Montadoras</h1>
+{% extends "base.html" %} 
+{% block title %} Lista de Montadoras {% endblock %}
+{% block content %}
+<div class="container">
+  <div class="separator-row">
+    {% block subtitle %}<h2>Montadoras</h2>{% endblock %}
+    <a href="{% url 'montadora_create' %}">Criar montadora</a>
+  </div>
 
-{% endblock %} {% block content %}
-<div>
-        <a href="{% url 'montadora_create' %}">Criar montadora</a>
-</div>
-<div>
-  <table>
+  <table class="table">
     <thead>
       <tr>
         <th>Nome</th>
@@ -17,22 +17,30 @@
     </thead>
     <tbody>
       {% for montadora in montadoras %}
-      <tr>
-        <td>
-          <a href="{% url 'montadora_detail' montadora.pk %}"
-            >{{ montadora.nome }}</a
-          >
-        </td>
+      <tr data-url="{% url 'montadora_detail' montadora.pk %}" style="cursor: pointer;">
+        <td>{{ montadora.nome }}</td>
         <td>{{ montadora.ano_fundacao }}</td>
         <td>{{ montadora.pais }}</td>
         <td>
-          <a href="{% url 'montadora_delete' montadora.pk %}">Delete</a>
+          <a href="{% url 'montadora_delete' montadora.pk %}">
+            <span style="color: rgb(173, 32, 32);" class="material-symbols-outlined">delete</span>
+          </a>
         </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="3">Nenhuma montadora encontrada.</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
-  </div>
-
-  {% endblock %}
 </div>
+
+<script>
+    document.querySelectorAll('tr[data-url]').forEach(function(row) {
+        row.addEventListener('click', function() {
+            window.location.href = row.getAttribute('data-url');
+        });
+    });
+</script>
+{% endblock %}

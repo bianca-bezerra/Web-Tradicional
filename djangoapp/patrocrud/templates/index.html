@@ -1,6 +1,15 @@
-{% extends "base.html" %} {% block title %}PATROCARS{% endblock %} 
-
-{%block header%}<h1>PATROCARS</h1>{%endblock%}
-
-{% block content %}<a href="{% url 'montadora_list' %}">Montadora</a>
-<a href="{% url 'modelo_list' %}">Modelo</a>{%endblock%}
+{% extends "base.html" %} {% block content %}
+<h1 id="welcome-text">Seja bem-vindo a PATROCARS!</h1>
+<div class="home">
+  <div>
+    <img
+      src="https://c4.wallpaperflare.com/wallpaper/181/179/710/cat-mammal-dandelion-flower-wallpaper-preview.jpg"
+    />
+  </div>
+  <div class="separator">
+    <a href="{% url 'montadora_list' %}">Montadoras</a>
+    <a href="{% url 'modelo_list' %}">Modelos</a>
+    <a href="{% url 'veiculo_list' %}">Veículos</a>
+  </div>
+</div>
+{%endblock%}

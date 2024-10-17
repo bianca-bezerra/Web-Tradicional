@@ -2,11 +2,12 @@
 {% block header %}
 <h1>Detalhes da {{montadora.nome}}</h1>
 {% endblock %} {% block content %}
-<div id="montadora-detail">
+<div id="detail">
   <h2>{{ montadora.nome }}</h2>
   <p><strong>Ano de Fundação:</strong> {{ montadora.ano_fundacao }}</p>
   <p><strong>País:</strong> {{ montadora.pais }}</p>
 
+  <a href="{% url 'montadora_update' montadora.pk %}">Editar</a>
   <a href="{% url 'montadora_delete' montadora.pk %}">Deletar</a>
   <a href="{% url 'montadora_list' %}">Voltar à lista</a>
 </div>
