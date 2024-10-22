@@ -10,5 +10,12 @@
   <a href="{% url 'montadora_update' montadora.pk %}">Editar</a>
   <a href="{% url 'montadora_delete' montadora.pk %}">Deletar</a>
   <a href="{% url 'montadora_list' %}">Voltar à lista</a>
+
+  <div>
+    <h3>Modelos existentes relacionados a montadora {{ montadora.nome }}:</h3>
+    {% for modelo in modelos %}
+    <p>{{modelo.nome}}</p>
+    {% endfor %}
+  </div>
 </div>
 {% endblock %}
