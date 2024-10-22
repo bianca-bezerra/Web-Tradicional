@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.contrib import messages
-
+from django.views.decorators.csrf import csrf_protect
 from .forms import ModeloVeiculoForm, MontadoraForm, VeiculoForm
 from .models import ModeloVeiculo, Montadora, Veiculo
 from .views_utils import create, update
@@ -21,6 +21,7 @@ def montadora_list(request):
     return render(request, "montadoras/montadora_list.html", context=context)
 
 
+@csrf_protect
 def montadora_create(request):
     return create(
         request,
@@ -31,6 +32,7 @@ def montadora_create(request):
     )
 
 
+@csrf_protect
 def montadora_delete(request, pk):
     montadora = get_object_or_404(Montadora, pk=pk)
     montadora.delete()
@@ -43,6 +45,7 @@ def montadora_detail(request, pk):
     return render(request, "montadoras/montadora_detail.html", {"montadora": montadora})
 
 
+@csrf_protect
 def montadora_update(request, pk):
     return update(
         request,
@@ -63,6 +66,7 @@ def modelo_list(request):
     return render(request, "modelos/modelo_list.html", {"modelos": modelos})
 
 
+@csrf_protect
 def modelo_create(request):
     return create(
         request,
@@ -73,6 +77,7 @@ def modelo_create(request):
     )
 
 
+@csrf_protect
 def modelo_delete(request, pk):
     modelo = get_object_or_404(ModeloVeiculo, pk=pk)
     modelo.delete()
@@ -85,6 +90,7 @@ def modelo_detail(request, pk):
     return render(request, "modelos/modelo_detail.html", {"modelo": modelo})
 
 
+@csrf_protect
 def modelo_update(request, pk):
     return update(
         request,
@@ -105,6 +111,7 @@ def veiculo_list(request):
     return render(request, "veiculos/veiculo_list.html", {"veiculos": veiculos})
 
 
+@csrf_protect
 def veiculo_create(request):
     return create(
         request,
@@ -114,7 +121,7 @@ def veiculo_create(request):
         "Adicionar veículo",
     )
 
-
+@csrf_protect
 def veiculo_delete(request, pk):
     veiculo = get_object_or_404(Veiculo, pk=pk)
     veiculo.delete()
@@ -127,6 +134,7 @@ def veiculo_detail(request, pk):
     return render(request, "veiculos/veiculo_detail.html", {"veiculo": veiculo})
 
 
+@csrf_protect
 def veiculo_update(request, pk):
     return update(
         request,
