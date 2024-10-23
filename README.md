@@ -29,3 +29,4 @@ Acesse o sistema através do https://web-tradicional.onrender.com
 - Melhoria na funcionalidade de detalhar
 - Melhoria nos links entre as páginas para otimizar o relacionamento entre as entidades.
 - Adição de filtragem
+- Responsividade
