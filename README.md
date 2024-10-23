@@ -18,16 +18,10 @@ OBS: A funcionalidade de detalhamento existe e está disponível, mas precisa de
 - **Framework**: Django
 - **Banco de Dados Relacional**: PostgreSQL
 - **ORM**: Django ORM
-- **Deploy**: Em breve no Render.
+- **Deploy**: Render.
 
-## Como executar:
-1. Crie um arquivo **.env** na raiz do projeto com a mesma estrutura do arquivo **.env.example.**
-2. Para iniciar o ambiente local, execute o comando a seguir:
-   
-   ```bash
-   docker-compose up --build
-   ```
-3. Acesse o sistema através do ```localhost:8000```
+## Deploy:
+Acesse o sistema através do https://web-tradicional.onrender.com
 
 ## 📋 TO-DO
 - Melhoria na componentização dos templates
@@ -35,4 +29,3 @@ OBS: A funcionalidade de detalhamento existe e está disponível, mas precisa de
 - Melhoria na funcionalidade de detalhar
 - Melhoria nos links entre as páginas para otimizar o relacionamento entre as entidades.
 - Adição de filtragem
-- Fazer o deploy
